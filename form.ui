@@ -70,6 +70,9 @@
    </property>
   </widget>
   <widget class="QTabWidget" name="tabWidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -79,7 +82,10 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
+   </property>
+   <property name="tabsClosable">
+    <bool>false</bool>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -112,8 +118,8 @@
     <widget class="QGroupBox" name="groupBox">
      <property name="geometry">
       <rect>
-       <x>70</x>
-       <y>40</y>
+       <x>20</x>
+       <y>60</y>
        <width>311</width>
        <height>201</height>
       </rect>
@@ -126,6 +132,12 @@
      </property>
      <property name="title">
       <string>Crop</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
      </property>
      <widget class="QLabel" name="label_6">
       <property name="geometry">
@@ -247,19 +259,25 @@
     <widget class="QGroupBox" name="groupBox_2">
      <property name="geometry">
       <rect>
-       <x>400</x>
-       <y>40</y>
-       <width>241</width>
+       <x>340</x>
+       <y>60</y>
+       <width>211</width>
        <height>201</height>
       </rect>
      </property>
      <property name="title">
       <string>Scale</string>
      </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
      <widget class="QLabel" name="labelScaleWidth">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>20</x>
         <y>40</y>
         <width>67</width>
         <height>31</height>
@@ -272,7 +290,7 @@
      <widget class="QSpinBox" name="spinBoxScaleWidth">
       <property name="geometry">
        <rect>
-        <x>100</x>
+        <x>80</x>
         <y>40</y>
         <width>91</width>
         <height>36</height>
@@ -291,7 +309,7 @@
      <widget class="QLabel" name="labelScaleHeight">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>20</x>
         <y>90</y>
         <width>67</width>
         <height>31</height>
@@ -304,7 +322,7 @@
      <widget class="QSpinBox" name="spinBoxScaleHeight">
       <property name="geometry">
        <rect>
-        <x>100</x>
+        <x>80</x>
         <y>90</y>
         <width>91</width>
         <height>36</height>
@@ -323,7 +341,7 @@
      <widget class="QLabel" name="labelScaleFilter">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>20</x>
         <y>140</y>
         <width>67</width>
         <height>31</height>
@@ -336,7 +354,7 @@
      <widget class="QComboBox" name="comboBox_3">
       <property name="geometry">
        <rect>
-        <x>100</x>
+        <x>80</x>
         <y>140</y>
         <width>121</width>
         <height>36</height>
@@ -402,14 +420,20 @@
     <widget class="QGroupBox" name="groupBox_3">
      <property name="geometry">
       <rect>
-       <x>70</x>
-       <y>250</y>
-       <width>311</width>
-       <height>91</height>
+       <x>560</x>
+       <y>160</y>
+       <width>301</width>
+       <height>101</height>
       </rect>
      </property>
      <property name="title">
       <string>Rotate</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
      </property>
      <widget class="QLabel" name="labelRotate">
       <property name="geometry">
@@ -438,33 +462,26 @@
     <widget class="QGroupBox" name="groupBox_4">
      <property name="geometry">
       <rect>
-       <x>400</x>
-       <y>250</y>
-       <width>241</width>
+       <x>560</x>
+       <y>60</y>
+       <width>301</width>
        <height>91</height>
       </rect>
      </property>
      <property name="title">
       <string>Deinterlace</string>
      </property>
-     <widget class="QCheckBox" name="checkBox">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>35</y>
-        <width>161</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Deinterlace (Yadif)</string>
-      </property>
-     </widget>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
      <widget class="QComboBox" name="comboBox_4">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>30</y>
+        <x>180</x>
+        <y>40</y>
         <width>61</width>
         <height>36</height>
        </rect>
@@ -483,6 +500,19 @@
        </property>
       </item>
      </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>40</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Deinterlace - Yadif:</string>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QWidget" name="tab_3">
@@ -494,7 +524,7 @@
       <rect>
        <x>150</x>
        <y>40</y>
-       <width>81</width>
+       <width>91</width>
        <height>36</height>
       </rect>
      </property>
@@ -683,7 +713,7 @@
       <rect>
        <x>150</x>
        <y>140</y>
-       <width>81</width>
+       <width>91</width>
        <height>36</height>
       </rect>
      </property>
@@ -745,7 +775,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>230</y>
+       <y>250</y>
        <width>101</width>
        <height>22</height>
       </rect>
@@ -764,7 +794,7 @@
      <property name="geometry">
       <rect>
        <x>60</x>
-       <y>270</y>
+       <y>280</y>
        <width>67</width>
        <height>21</height>
       </rect>
@@ -773,11 +803,11 @@
       <string>Speed:</string>
      </property>
     </widget>
-    <widget class="QSlider" name="horizontalSlider">
+    <widget class="QSlider" name="horizontalSliderSpeed">
      <property name="geometry">
       <rect>
        <x>150</x>
-       <y>270</y>
+       <y>280</y>
        <width>160</width>
        <height>31</height>
       </rect>
@@ -802,7 +832,7 @@
      <property name="geometry">
       <rect>
        <x>60</x>
-       <y>320</y>
+       <y>330</y>
        <width>67</width>
        <height>21</height>
       </rect>
@@ -811,11 +841,11 @@
       <string>Passes:</string>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBox_2">
+    <widget class="QComboBox" name="comboBoxPasses">
      <property name="geometry">
       <rect>
        <x>150</x>
-       <y>310</y>
+       <y>320</y>
        <width>81</width>
        <height>36</height>
       </rect>
@@ -847,23 +877,23 @@
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButtonConstantQ_2">
+    <widget class="QRadioButton" name="radioButtonBitrate">
      <property name="geometry">
       <rect>
        <x>410</x>
-       <y>150</y>
+       <y>130</y>
        <width>151</width>
-       <height>26</height>
+       <height>51</height>
       </rect>
      </property>
      <property name="text">
-      <string>Bitrate</string>
+      <string>Bitrate:</string>
      </property>
      <property name="checked">
       <bool>false</bool>
      </property>
     </widget>
-    <widget class="QSlider" name="horizontalSlider_2">
+    <widget class="QSlider" name="horizontalSliderQuality">
      <property name="geometry">
       <rect>
        <x>410</x>
@@ -885,6 +915,9 @@
       <enum>Qt::Horizontal</enum>
      </property>
      <property name="invertedAppearance">
+      <bool>false</bool>
+     </property>
+     <property name="invertedControls">
       <bool>true</bool>
      </property>
      <property name="tickPosition">
@@ -894,7 +927,7 @@
       <number>1</number>
      </property>
     </widget>
-    <widget class="QLabel" name="label_5">
+    <widget class="QLabel" name="labelQuality">
      <property name="geometry">
       <rect>
        <x>560</x>
@@ -907,17 +940,250 @@
       <string>30</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_10">
+    <widget class="QLabel" name="labelSpeed">
      <property name="geometry">
       <rect>
        <x>320</x>
-       <y>260</y>
-       <width>51</width>
+       <y>270</y>
+       <width>111</width>
        <height>41</height>
       </rect>
      </property>
      <property name="text">
       <string>4</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelEncoderTune">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>190</y>
+       <width>67</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Tune:</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBoxTuneAom">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>190</y>
+       <width>91</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="visible">
+      <bool>false</bool>
+     </property>
+     <item>
+      <property name="text">
+       <string>none</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>psnr</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>ssim</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBoxTuneRav1e">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>190</y>
+       <width>121</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="visible">
+      <bool>false</bool>
+     </property>
+     <item>
+      <property name="text">
+       <string>Psychovisual</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Psnr</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBoxTunex265">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>190</y>
+       <width>111</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="visible">
+      <bool>false</bool>
+     </property>
+     <item>
+      <property name="text">
+       <string>none</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>psnr</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>ssim</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>grain</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>fastdecode</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>zerolatency</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>animation</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBoxTunex264">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>190</y>
+       <width>94</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>none</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>film</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>animation</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>grain</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>stillimage</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>fastdecode</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>zerolatency</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>psnr</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>ssim</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QSpinBox" name="spinBoxBitrate">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>140</y>
+       <width>91</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>100000</number>
+     </property>
+     <property name="singleStep">
+      <number>10</number>
+     </property>
+     <property name="value">
+      <number>1000</number>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxAdvancedSettings">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>200</y>
+       <width>161</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Advanced Settings</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxCBR">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>140</y>
+       <width>97</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>CBR</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_5">
+    <attribute name="title">
+     <string>Advanced Settings</string>
+    </attribute>
+    <widget class="QGroupBox" name="groupBox_7">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>871</width>
+       <height>311</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>AOM Settings</string>
      </property>
     </widget>
    </widget>
