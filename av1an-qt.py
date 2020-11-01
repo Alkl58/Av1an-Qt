@@ -1,13 +1,18 @@
 # This Python file uses the following encoding: utf-8
 
 from PyQt5 import QtWidgets, uic
+from PyQt5.QtWidgets import QFileDialog, QMessageBox
 import os
 import sys
 
 
 class av1angui(QtWidgets.QMainWindow):
 
-    aomArguments = ""
+    videoInput = None
+    videoInputSet = False
+    videoOutput = None
+    videoOutputSet = False
+    aomArguments = None
 
     def __init__(self):
 
@@ -17,16 +22,20 @@ class av1angui(QtWidgets.QMainWindow):
         self.setFixedWidth(900)  # Set Window Width
         self.setFixedHeight(570)  # Set Window Height
         self.setWindowTitle("Av1an")  # Set Window Title
+        self.pushButtonDebuggingTemp.clicked.connect(self.setVideoFilters) # !!!! REMOVE BEFORE RELEASE !!!! !!!! REMOVE BEFORE RELEASE !!!! !!!! REMOVE BEFORE RELEASE !!!!
         self.horizontalSliderQuality.valueChanged.connect(self.UiSliderQuality)
         self.horizontalSliderSpeed.valueChanged.connect(self.UiSliderSpeed)
         self.comboBoxEncoder.currentIndexChanged.connect(self.UiEncoder)
         self.checkBoxAdvancedSettings.stateChanged.connect(self.UiAdvancedSettings)
+        self.pushButtonOpenSource.clicked.connect(self.OpenVideoSource)
+        self.pushButtonSaveTo.clicked.connect(self.SaveVideoTo)
+        self.pushButtonStart.clicked.connect(self.Av1anStartEncode)
         self.comboBoxTuneAom.show()  # Because it is set 'invisible' in .ui file
         self.tabWidget.setTabEnabled(3, False)
         self.AomArgs()
         self.show()  # Show the GUI
 
-    ''' Ui Elements '''
+    # ══════════════ Dynamic UI Changes ═══════════════
     def UiSliderQuality(self):
         self.labelQuality.setText(str(self.horizontalSliderQuality.value()))
 
@@ -143,9 +152,82 @@ class av1angui(QtWidgets.QMainWindow):
             self.comboBoxTuneAom.hide()
             self.comboBoxTuneRav1e.hide()
 
-    ''' ----------- '''
 
-    ''' aom arg parsing '''
+
+    # ═════════════════════════════════════════════════
+    # ═══════════════ Button Functions ════════════════
+    # Button Open Video Source
+    def OpenVideoSource(self):
+        fileName, _ = QFileDialog.getOpenFileName(self, "Select Video...", "", "Video File (*.mp4 *.mkv *.webm *.flv *.mpg *.mpeg *.ts *.m2ts *.mov)")
+        if fileName: # if fileName is not Null
+            self.videoInput = fileName
+            self.videoInputSet = True
+    # Button Save Video to
+    def SaveVideoTo(self):
+        fileName, _ = QFileDialog.getSaveFileName(self, "Save Video File", "", "Matroska (*.mkv);; WebM (*.webm)")
+        if fileName:
+            self.videoOutput = fileName
+            self.videoOutputSet = True
+    # ═════════════════════════════════════════════════
+    # ═════════════════ MessageBoxes ══════════════════
+    def showDialog(self, title, text):
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText(text)
+        msgBox.setWindowTitle(title)
+        msgBox.setStandardButtons(QMessageBox.Ok)
+        msgBox.exec()
+    # ═════════════════════════════════════════════════
+    # ════════════════ Video Filters ══════════════════
+    def setVideoFilters(self):
+        crop = self.groupBoxCrop.isChecked() == True
+        resize = self.groupBoxScale.isChecked() == True
+        deinterlace = self.groupBoxDeinterlace.isChecked() == True
+        amountFilters = 0
+        filterCommand = None
+
+        if crop: amountFilters += 1
+        if resize: amountFilters += 1
+        if deinterlace: amountFilters += 1
+
+        if crop or resize or deinterlace:
+            tempCounter = 0
+            filterCommand = " -vf "
+            if crop:
+                filterCommand += self.VideoCrop()
+                tempCounter += 1
+            if deinterlace:
+                if tempCounter == 1:
+                    filterCommand += ","
+                filterCommand += self.VideoDeinterlace()
+                tempCounter += 1
+            if resize:
+                if tempCounter == 1 or tempCounter == 2:
+                    filterCommand += ","
+                filterCommand += self.VideoResize() # !!! Has to be last, else ffmpeg logic fails
+
+    def VideoCrop(self):
+        if self.groupBoxCrop.isChecked() == True:
+            widthNew = str(self.spinBoxCropRight.value() + self.spinBoxCropLeft.value())
+            heightNew = str(self.spinBoxCropTop.value() + self.spinBoxCropBottom.value())
+            return "crop=iw-" + widthNew + ":ih-" + heightNew + ":" + str(self.spinBoxCropLeft.value()) + ":" + str(self.spinBoxCropTop.value())
+        else:
+            return None  # Needs to be set, else it will crop if in the same instance it was active
+
+    def VideoResize(self):
+        if self.groupBoxScale.isChecked() == True:
+            return "scale=" + str(self.spinBoxScaleWidth.value()) + ":" + str(self.spinBoxScaleHeight.value()) + " -sws_flags " + self.comboBoxResizeFilters.currentText()
+        else:
+            return None
+
+    def VideoDeinterlace(self):
+        if self.groupBoxDeinterlace.isChecked() == True:
+            return "yadif=" + self.comboBoxDeinterlace.currentText()
+        else:
+            return None
+    # ═════════════════════════════════════════════════
+    # ══════════════════ AOM Args ═════════════════════
+
     def AomArgs(self):
         self.aomArguments = ""
         self.aomArguments += " --bit-depth=" + self.comboBoxBitDepth.currentText()   # Bit-Depth
@@ -162,9 +244,16 @@ class av1angui(QtWidgets.QMainWindow):
             else:
                 return " --end-usage=vbr --target-bitrate=" + str(self.spinBoxBitrate.Value())
         else:
-            return " am I retarded? "  # Something bad happened when landing here
+            return " error "  # Something bad happened when landing here
 
-    ''' --------------- '''
+    # ═════════════════════════════════════════════════
+    # ════════════════ Av1an Entry ════════════════════
+    def Av1anStartEncode(self):
+        if self.videoInputSet is True and self.videoOutputSet is True:
+            self.setVideoFilters()
+        else:
+            self.showDialog("Attention", "Please set Input and Output!")
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
