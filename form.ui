@@ -22,44 +22,82 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>121</width>
+     <width>141</width>
      <height>51</height>
     </rect>
    </property>
    <property name="text">
     <string>Open Source</string>
    </property>
+   <property name="icon">
+    <iconset>
+     <normalon>video.png</normalon>
+     <selectedoff>video.png</selectedoff>
+     <selectedon>video.png</selectedon>
+    </iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>40</width>
+     <height>40</height>
+    </size>
+   </property>
   </widget>
   <widget class="QPushButton" name="pushButtonStart">
    <property name="geometry">
     <rect>
-     <x>270</x>
+     <x>310</x>
      <y>10</y>
-     <width>121</width>
+     <width>151</width>
      <height>51</height>
     </rect>
    </property>
    <property name="text">
     <string>Start Encoding</string>
    </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>start.png</normaloff>
+     <selectedoff>start.png</selectedoff>
+     <selectedon>start.png</selectedon>start.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>38</width>
+     <height>38</height>
+    </size>
+   </property>
   </widget>
   <widget class="QPushButton" name="pushButtonSaveTo">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>160</x>
      <y>10</y>
-     <width>121</width>
+     <width>141</width>
      <height>51</height>
     </rect>
    </property>
    <property name="text">
     <string>Save to...</string>
    </property>
+   <property name="icon">
+    <iconset>
+     <normalon>save.png</normalon>
+     <selectedoff>save.png</selectedoff>
+     <selectedon>save.png</selectedon>
+    </iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>40</width>
+     <height>40</height>
+    </size>
+   </property>
   </widget>
   <widget class="QPushButton" name="pushButtonStart_2">
    <property name="geometry">
     <rect>
-     <x>400</x>
+     <x>470</x>
      <y>10</y>
      <width>121</width>
      <height>51</height>
@@ -67,6 +105,19 @@
    </property>
    <property name="text">
     <string>Cancel</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normalon>stop.png</normalon>
+     <selectedoff>stop.png</selectedoff>
+     <selectedon>stop.png</selectedon>
+    </iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>40</width>
+     <height>40</height>
+    </size>
    </property>
   </widget>
   <widget class="QTabWidget" name="tabWidget">
@@ -82,7 +133,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <property name="tabsClosable">
     <bool>false</bool>
@@ -91,6 +142,346 @@
     <attribute name="title">
      <string>Av1an Settings</string>
     </attribute>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>871</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Segmenting</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <widget class="QSpinBox" name="spinBoxAv1anExtraSplits">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>90</y>
+        <width>71</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Noto Mono';&quot;&gt;Adding extra splits if frame distance beetween splits bigger than&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Noto Mono';&quot;&gt;given value. Works with/without PySceneDetect&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Noto Mono';&quot;&gt;Example: 1000 frames video with single scene,&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Noto Mono';&quot;&gt;-xs 200 will add splits at 200,400,600,800.&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>10000</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>40</y>
+        <width>58</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Workers:</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBoxAv1anWorkers">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>40</y>
+        <width>52</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>256</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelSplitting">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>90</y>
+        <width>58</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Splitting:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelPySceneThreshold">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>90</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Threshold:</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>90</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Extra Splits:</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBoxPySceneThreshold">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>90</y>
+        <width>52</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>PySceneDetect threshold for scene detection Default: 35</string>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>100</number>
+      </property>
+      <property name="value">
+       <number>35</number>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBoxAv1anSplitting">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>90</y>
+        <width>131</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Method used for generating splits. (Default: PySceneDetect)&lt;/p&gt;&lt;p&gt;Options:  &lt;/p&gt;&lt;p&gt;PyScenedetect, content based scenedetection with threshold.&lt;/p&gt;&lt;p&gt;aom_keyframes, using stat file of 1 pass of aomenc encode&lt;/p&gt;&lt;p&gt;to get exact place where encoder will place new keyframes.&lt;/p&gt;&lt;p&gt; (Keep in mind that speed also depends on set aomenc parameters)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>PySceneDetect</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>aom_keyframes</string>
+       </property>
+      </item>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>140</y>
+       <width>871</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Target VMAF</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>40</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Target VMAF:</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBoxTargetVMAF">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>40</y>
+        <width>52</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Noto Mono';&quot;&gt;Vmaf value to target. Supported for all encoders(Exception:VVC).&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Noto Mono';&quot;&gt;Works best in range 85-97.&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Noto Mono';&quot;&gt;When using this mode specify full encoding options.&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="minimum">
+       <number>50</number>
+      </property>
+      <property name="maximum">
+       <number>100</number>
+      </property>
+      <property name="value">
+       <number>95</number>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBoxMinQualityVMAF">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>40</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Min Quality:</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBoxMaxQVMAF">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>40</y>
+        <width>52</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Minimum Quality (max quantizer) value limit for Target VMAF&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBoxMaxQualityVMAF">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>40</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Max Quality:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>70</y>
+        <width>461</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <italic>true</italic>
+       </font>
+      </property>
+      <property name="text">
+       <string>NOTE: Min Quality = Max Quantizer  |  Max Quality = Min Quantizer</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBoxMinQVMAF">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>40</y>
+        <width>52</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Maximum Quality (min quantizer) value limit for Target VMAF&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_16">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>100</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>VMAF Probes:</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBoxVMAFProbes">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>100</y>
+        <width>52</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Number of probes for interpolation.&lt;/p&gt;&lt;p&gt;1 and 2 probes have special cases to try to work with few data points.&lt;/p&gt;&lt;p&gt;Optimal is 4-6 probes. Default: 4&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>10</number>
+      </property>
+      <property name="value">
+       <number>4</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_17">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>100</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>VMAF Resolution:</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBoxVMAFResolution">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>100</y>
+        <width>101</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>1920x1080</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>3840x2160</string>
+       </property>
+      </item>
+     </widget>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
@@ -115,7 +506,7 @@
       <string>Filters</string>
      </property>
     </widget>
-    <widget class="QGroupBox" name="groupBox">
+    <widget class="QGroupBox" name="groupBoxCrop">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -256,7 +647,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QGroupBox" name="groupBox_2">
+    <widget class="QGroupBox" name="groupBoxScale">
      <property name="geometry">
       <rect>
        <x>340</x>
@@ -351,7 +742,7 @@
        <string>Filter:</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox_3">
+     <widget class="QComboBox" name="comboBoxResizeFilters">
       <property name="geometry">
        <rect>
         <x>80</x>
@@ -417,49 +808,7 @@
       </item>
      </widget>
     </widget>
-    <widget class="QGroupBox" name="groupBox_3">
-     <property name="geometry">
-      <rect>
-       <x>560</x>
-       <y>160</y>
-       <width>301</width>
-       <height>101</height>
-      </rect>
-     </property>
-     <property name="title">
-      <string>Rotate</string>
-     </property>
-     <property name="checkable">
-      <bool>true</bool>
-     </property>
-     <property name="checked">
-      <bool>false</bool>
-     </property>
-     <widget class="QLabel" name="labelRotate">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>40</y>
-        <width>141</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Rotate (Clockwise):</string>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBoxRotate">
-      <property name="geometry">
-       <rect>
-        <x>190</x>
-        <y>40</y>
-        <width>81</width>
-        <height>36</height>
-       </rect>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QGroupBox" name="groupBox_4">
+    <widget class="QGroupBox" name="groupBoxDeinterlace">
      <property name="geometry">
       <rect>
        <x>560</x>
@@ -477,7 +826,7 @@
      <property name="checked">
       <bool>false</bool>
      </property>
-     <widget class="QComboBox" name="comboBox_4">
+     <widget class="QComboBox" name="comboBoxDeinterlace">
       <property name="geometry">
        <rect>
         <x>180</x>
@@ -1936,6 +2285,19 @@ p, li { white-space: pre-wrap; }
       </property>
      </widget>
     </widget>
+    <widget class="QPushButton" name="pushButtonSelectVMAFModel">
+     <property name="geometry">
+      <rect>
+       <x>740</x>
+       <y>210</y>
+       <width>131</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Select VMAF Model</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QProgressBar" name="progressBar">
@@ -1949,6 +2311,19 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="value">
     <number>24</number>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonDebuggingTemp">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>10</y>
+     <width>88</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Debugging</string>
    </property>
   </widget>
  </widget>
