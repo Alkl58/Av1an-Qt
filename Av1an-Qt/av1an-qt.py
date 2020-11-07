@@ -14,6 +14,7 @@ class av1angui(QtWidgets.QMainWindow):
     videoOutputSet = False
     aomArguments = None
     rav1eArguments = None
+    svtav1Arguments = None
 
     def __init__(self):
 
@@ -23,7 +24,7 @@ class av1angui(QtWidgets.QMainWindow):
         self.setFixedWidth(900)  # Set Window Width
         self.setFixedHeight(580)  # Set Window Height
         self.setWindowTitle("Av1an-Qt")  # Set Window Title
-        self.pushButtonDebuggingTemp.clicked.connect(self.AomArgs) # !!!! REMOVE BEFORE RELEASE
+        self.pushButtonDebuggingTemp.clicked.connect(self.SvtAV1Args) # !!!! REMOVE BEFORE RELEASE
         self.horizontalSliderQuality.valueChanged.connect(self.UiSliderQuality)
         self.horizontalSliderSpeed.valueChanged.connect(self.UiSliderSpeed)
         self.comboBoxEncoder.currentIndexChanged.connect(self.UiEncoder)
@@ -34,7 +35,8 @@ class av1angui(QtWidgets.QMainWindow):
         self.pushButtonStart.clicked.connect(self.Av1anStartEncode)
         self.comboBoxTuneAom.show()  # Because it is set 'invisible' in .ui file
         self.groupBoxAomSettings.show()  # Because it is set 'invisible' in .ui file
-        self.tabWidget.setTabEnabled(3, False)
+        self.groupBoxSVTAV1Settings.hide()  # to-do: hide in ui file
+        self.tabWidget.setTabEnabled(4, False)
         self.AomArgs()
         self.show()  # Show the GUI
 
@@ -72,9 +74,9 @@ class av1angui(QtWidgets.QMainWindow):
 
     def UiAdvancedSettings(self):
         if self.checkBoxAdvancedSettings.isChecked() == True:
-            self.tabWidget.setTabEnabled(3, True)
+            self.tabWidget.setTabEnabled(4, True)
         else:
-            self.tabWidget.setTabEnabled(3, False)
+            self.tabWidget.setTabEnabled(4, False)
 
     def UiEncoder(self):
         currentIndex = self.comboBoxEncoder.currentIndex()
@@ -89,8 +91,9 @@ class av1angui(QtWidgets.QMainWindow):
             self.comboBoxTunex265.hide()
             self.comboBoxTunex264.hide()
             self.groupBoxRav1eSettings.hide()
+            self.groupBoxSVTAV1Settings.hide()
             self.groupBoxAomSettings.show()
-            self.checkBoxCBR.show()
+            self.checkBoxCBR.show()            
         elif currentIndex == 1:  # rav1e
             self.horizontalSliderQuality.setMaximum(255)
             self.horizontalSliderQuality.setValue(100)
@@ -103,6 +106,7 @@ class av1angui(QtWidgets.QMainWindow):
             self.comboBoxTunex264.hide()
             self.groupBoxAomSettings.hide()
             self.groupBoxRav1eSettings.show()
+            self.groupBoxSVTAV1Settings.hide()
             self.checkBoxCBR.hide()
         elif currentIndex == 2:  # svt-av1
             self.horizontalSliderQuality.setValue(30)
@@ -116,6 +120,7 @@ class av1angui(QtWidgets.QMainWindow):
             self.comboBoxTunex264.hide()
             self.groupBoxAomSettings.hide()
             self.groupBoxRav1eSettings.hide()
+            self.groupBoxSVTAV1Settings.show()
         elif currentIndex == 3:  # svt-vp9
             self.horizontalSliderQuality.setValue(50)
             self.horizontalSliderQuality.setMaximum(63)
@@ -128,6 +133,7 @@ class av1angui(QtWidgets.QMainWindow):
             self.comboBoxTunex264.hide()
             self.groupBoxAomSettings.hide()
             self.groupBoxRav1eSettings.hide()
+            self.groupBoxSVTAV1Settings.hide()
         elif currentIndex == 4:  # vpx-vp9
             self.horizontalSliderQuality.setValue(30)
             self.horizontalSliderQuality.setMaximum(63)
@@ -140,6 +146,7 @@ class av1angui(QtWidgets.QMainWindow):
             self.comboBoxTunex264.hide()
             self.groupBoxAomSettings.hide()
             self.groupBoxRav1eSettings.hide()
+            self.groupBoxSVTAV1Settings.hide()
         elif currentIndex == 5:  # x265
             self.horizontalSliderQuality.setValue(22)
             self.horizontalSliderQuality.setMaximum(63)
@@ -152,6 +159,7 @@ class av1angui(QtWidgets.QMainWindow):
             self.comboBoxTunex264.hide()
             self.groupBoxAomSettings.hide()
             self.groupBoxRav1eSettings.hide()
+            self.groupBoxSVTAV1Settings.hide()
         elif currentIndex == 6:  # x264
             self.horizontalSliderQuality.setValue(23)
             self.horizontalSliderQuality.setMaximum(51)
@@ -164,6 +172,7 @@ class av1angui(QtWidgets.QMainWindow):
             self.comboBoxTunex264.show()
             self.groupBoxAomSettings.hide()
             self.groupBoxRav1eSettings.hide()
+            self.groupBoxSVTAV1Settings.hide()
         elif currentIndex == 7:  # vvc - experimental
             self.labelEncoderTune.hide()
             self.comboBoxTunex265.hide()
@@ -172,6 +181,7 @@ class av1angui(QtWidgets.QMainWindow):
             self.comboBoxTuneRav1e.hide()
             self.groupBoxAomSettings.hide()
             self.groupBoxRav1eSettings.hide()
+            self.groupBoxSVTAV1Settings.hide()
 
     def UiCustomSettings(self):
         if self.groupBoxCustomSettings.isChecked() == True:
@@ -184,9 +194,14 @@ class av1angui(QtWidgets.QMainWindow):
                 self.Rav1eArgs()
                 self.textEditCustomSettings.setText(self.rav1eArguments)
                 self.groupBoxRav1eSettings.setEnabled(False)
+            if currentIndex == 2:
+                self.SvtAV1Args()
+                self.textEditCustomSettings.setText(self.svtav1Arguments)
+                self.groupBoxSVTAV1Settings.setEnabled(False)
         else:
             self.groupBoxAomSettings.setEnabled(True)
             self.groupBoxRav1eSettings.setEnabled(True)
+            self.groupBoxSVTAV1Settings.setEnabled(True)
 
     # ═════════════════════════════════════════════════
     # ═══════════════ Button Functions ════════════════
@@ -365,6 +380,38 @@ class av1angui(QtWidgets.QMainWindow):
             return " --quantizer " + self.labelQuality.text()
         else:
             return " --bitrate " + str(self.spinBoxBitrate.value())
+
+    # ═════════════════════════════════════════════════
+    # ════════════════ SVT-AV1 Args ═══════════════════
+
+    def SvtAV1Args(self):
+        self.svtav1Arguments = ""
+        self.svtav1Arguments += self.SvtAV1QualityMode()
+        self.svtav1Arguments += " --preset " + self.labelSpeed.text()
+
+        if self.checkBoxAdvancedSettings.isChecked() is True:
+            self.svtav1Arguments += " --lp " + str(self.spinBoxSVTAV1Threads.value())
+            self.svtav1Arguments += " --tile-columns " + str(self.spinBoxSVTAV1TileCols.value())
+            self.svtav1Arguments += " --tile-rows " + str(self.spinBoxSVTAV1TileRows.value())
+            self.svtav1Arguments += " --keyint " + str(self.spinBoxSVTAV1GOP.value())
+            self.svtav1Arguments += " --adaptive-quantization " + str(self.comboBoxSVTAV1AQMode.currentIndex())
+            self.svtav1Arguments += " --color-format " + str(self.comboBoxSVTAV1Color.currentIndex() + 1)
+            self.svtav1Arguments += " --profile " + str(self.comboBoxSVTAV1Profile.currentIndex())
+
+            if self.checkBoxSVTAV1HDR.isChecked() is True:
+                self.svtav1Arguments += " --enable-hdr 1"
+
+            if self.checkBoxSVTAV116Bit.isChecked() is True:
+                self.svtav1Arguments += " --16bit-pipeline 1"
+
+
+    def SvtAV1QualityMode(self):
+        if self.radioButtonConstantQ.isChecked() == True:
+            return " --rc 0 -q " + self.labelQuality.text()
+        elif self.checkBoxCBR.isChecked() == False:
+            return " --rc 1 --tbr " + str(self.spinBoxBitrate.value())
+        else:
+            return " --rc 2 --tbr " + str(self.spinBoxBitrate.value())
 
     # ═════════════════════════════════════════════════
     # ════════════════ Av1an Entry ════════════════════
