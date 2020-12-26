@@ -21,26 +21,41 @@ class av1angui(QtWidgets.QMainWindow):
         super(av1angui, self).__init__()
         pth = os.path.join(os.path.dirname(__file__), "form.ui")  # Set path ui
         uic.loadUi(pth, self)  # Load the .ui file
-        self.setFixedWidth(900)  # Set Window Width
-        self.setFixedHeight(580)  # Set Window Height
-        self.setWindowTitle("Av1an-Qt")  # Set Window Title
-        self.pushButtonDebuggingTemp.clicked.connect(self.SvtAV1Args) # !!!! REMOVE BEFORE RELEASE
-        self.horizontalSliderQuality.valueChanged.connect(self.UiSliderQuality)
-        self.horizontalSliderSpeed.valueChanged.connect(self.UiSliderSpeed)
-        self.comboBoxEncoder.currentIndexChanged.connect(self.UiEncoder)
-        self.checkBoxAdvancedSettings.stateChanged.connect(self.UiAdvancedSettings)
-        self.groupBoxCustomSettings.clicked.connect(self.UiCustomSettings)
-        self.pushButtonOpenSource.clicked.connect(self.OpenVideoSource)
-        self.pushButtonSaveTo.clicked.connect(self.SaveVideoTo)
-        self.pushButtonStart.clicked.connect(self.Av1anStartEncode)
-        self.comboBoxTuneAom.show()  # Because it is set 'invisible' in .ui file
-        self.groupBoxAomSettings.show()  # Because it is set 'invisible' in .ui file
-        self.groupBoxSVTAV1Settings.hide()  # to-do: hide in ui file
-        self.tabWidget.setTabEnabled(4, False)
-        self.AomArgs()
+        self.Video_Settings_Button.clicked.connect(self.MainMenuSettingsToggle)
+        self.Input_Button.clicked.connect(self.MainMenuInputToggle)
+        self.Encoder_Button.clicked.connect(self.MainMenuEncoderToggle)
+        #self.setFixedWidth(900)  # Set Window Width
+        #self.setFixedHeight(580)  # Set Window Height
+        self.setWindowTitle("Av1an")  # Set Window Title
+        #self.pushButtonDebuggingTemp.clicked.connect(self.SvtAV1Args) # !!!! REMOVE BEFORE RELEASE
+        #self.horizontalSliderQuality.valueChanged.connect(self.UiSliderQuality)
+        #self.horizontalSliderSpeed.valueChanged.connect(self.UiSliderSpeed)
+        #self.comboBoxEncoder.currentIndexChanged.connect(self.UiEncoder)
+        #self.checkBoxAdvancedSettings.stateChanged.connect(self.UiAdvancedSettings)
+        #self.groupBoxCustomSettings.clicked.connect(self.UiCustomSettings)
+        #self.pushButtonOpenSource.clicked.connect(self.OpenVideoSource)
+        #self.pushButtonSaveTo.clicked.connect(self.SaveVideoTo)
+        #self.pushButtonStart.clicked.connect(self.Av1anStartEncode)
+        #self.comboBoxTuneAom.show()  # Because it is set 'invisible' in .ui file
+        #self.groupBoxAomSettings.show()  # Because it is set 'invisible' in .ui file
+        #self.groupBoxSVTAV1Settings.hide()  # to-do: hide in ui file
+        #self.tabWidget.setTabEnabled(4, False)
+        #self.AomArgs()
         self.show()  # Show the GUI
 
-    # ══════════════ Dynamic UI Changes ═══════════════
+    # ═══════════════ Dynamic UI Stuff ════════════════
+
+    # Toggle Main UI (Input / Generic Settings / Encoder / Output)
+    def MainMenuEncoderToggle(self):
+        self.MainWidget.setCurrentIndex(2)
+
+    def MainMenuSettingsToggle(self):
+        self.MainWidget.setCurrentIndex(1)
+
+    def MainMenuInputToggle(self):
+        self.MainWidget.setCurrentIndex(0)
+
+    # OLD STUFF
     def UiSliderQuality(self):
         self.labelQuality.setText(str(self.horizontalSliderQuality.value()))
 
