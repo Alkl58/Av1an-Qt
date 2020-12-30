@@ -23,14 +23,9 @@ class av1angui(QtWidgets.QMainWindow):
         uic.loadUi(pth, self)  # Load the .ui file
         self.Video_Settings_Button.clicked.connect(self.MainMenuSettingsToggle)
         self.Input_Button.clicked.connect(self.MainMenuInputToggle)
-        self.Encoder_Button.clicked.connect(self.MainMenuEncoderToggle)
-        #self.setFixedWidth(900)  # Set Window Width
-        #self.setFixedHeight(580)  # Set Window Height
         self.setWindowTitle("Av1an")  # Set Window Title
-        #self.pushButtonDebuggingTemp.clicked.connect(self.SvtAV1Args) # !!!! REMOVE BEFORE RELEASE
-        #self.horizontalSliderQuality.valueChanged.connect(self.UiSliderQuality)
-        #self.horizontalSliderSpeed.valueChanged.connect(self.UiSliderSpeed)
-        #self.comboBoxEncoder.currentIndexChanged.connect(self.UiEncoder)
+        self.horizontalSliderSpeed.valueChanged.connect(self.UiSliderSpeed)
+        self.comboBoxEncoder.currentIndexChanged.connect(self.UiEncoder)
         #self.checkBoxAdvancedSettings.stateChanged.connect(self.UiAdvancedSettings)
         #self.groupBoxCustomSettings.clicked.connect(self.UiCustomSettings)
         #self.pushButtonOpenSource.clicked.connect(self.OpenVideoSource)
@@ -39,7 +34,6 @@ class av1angui(QtWidgets.QMainWindow):
         #self.comboBoxTuneAom.show()  # Because it is set 'invisible' in .ui file
         #self.groupBoxAomSettings.show()  # Because it is set 'invisible' in .ui file
         #self.groupBoxSVTAV1Settings.hide()  # to-do: hide in ui file
-        #self.tabWidget.setTabEnabled(4, False)
         #self.AomArgs()
         self.show()  # Show the GUI
 
@@ -60,32 +54,8 @@ class av1angui(QtWidgets.QMainWindow):
         self.labelQuality.setText(str(self.horizontalSliderQuality.value()))
 
     def UiSliderSpeed(self):
-        if self.comboBoxEncoder.currentIndex() != 5 and self.comboBoxEncoder.currentIndex() != 6:
-            self.labelSpeed.setText(str(self.horizontalSliderSpeed.value()))
-        else:
-            currentIndex = self.horizontalSliderSpeed.value()
-            textString = ""
-            if currentIndex == 0:
-                textString = "placebo"
-            elif currentIndex == 1:
-                textString = "veryslow"
-            elif currentIndex == 2:
-                textString = "slower"
-            elif currentIndex == 3:
-                textString = "slow"
-            elif currentIndex == 4:
-                textString = "medium"
-            elif currentIndex == 5:
-                textString = "fast"
-            elif currentIndex == 6:
-                textString = "faster"
-            elif currentIndex == 7:
-                textString = "veryfast"
-            elif currentIndex == 8:
-                textString = "superfast"
-            elif currentIndex == 9:
-                textString = "ultrafast"
-            self.labelSpeed.setText(textString)
+        self.labelSpeed.setText(str(self.horizontalSliderSpeed.value()))
+
 
     def UiAdvancedSettings(self):
         if self.checkBoxAdvancedSettings.isChecked() == True:
@@ -96,107 +66,14 @@ class av1angui(QtWidgets.QMainWindow):
     def UiEncoder(self):
         currentIndex = self.comboBoxEncoder.currentIndex()
         if currentIndex == 0:  # aom
-            self.horizontalSliderQuality.setValue(30)
-            self.horizontalSliderQuality.setMaximum(63)
             self.horizontalSliderSpeed.setValue(4)
             self.horizontalSliderSpeed.setMaximum(9)
-            self.comboBoxTuneAom.show()
-            self.comboBoxTuneRav1e.hide()
-            self.labelEncoderTune.show()
-            self.comboBoxTunex265.hide()
-            self.comboBoxTunex264.hide()
-            self.groupBoxRav1eSettings.hide()
-            self.groupBoxSVTAV1Settings.hide()
-            self.groupBoxAomSettings.show()
-            self.checkBoxCBR.show()            
         elif currentIndex == 1:  # rav1e
-            self.horizontalSliderQuality.setMaximum(255)
-            self.horizontalSliderQuality.setValue(100)
             self.horizontalSliderSpeed.setValue(6)
             self.horizontalSliderSpeed.setMaximum(10)
-            self.comboBoxTuneAom.hide()
-            self.comboBoxTuneRav1e.show()
-            self.labelEncoderTune.show()
-            self.comboBoxTunex265.hide()
-            self.comboBoxTunex264.hide()
-            self.groupBoxAomSettings.hide()
-            self.groupBoxRav1eSettings.show()
-            self.groupBoxSVTAV1Settings.hide()
-            self.checkBoxCBR.hide()
         elif currentIndex == 2:  # svt-av1
-            self.horizontalSliderQuality.setValue(30)
-            self.horizontalSliderQuality.setMaximum(63)
             self.horizontalSliderSpeed.setValue(7)
             self.horizontalSliderSpeed.setMaximum(8)
-            self.comboBoxTuneAom.hide()
-            self.comboBoxTuneRav1e.hide()
-            self.labelEncoderTune.hide()
-            self.comboBoxTunex265.hide()
-            self.comboBoxTunex264.hide()
-            self.groupBoxAomSettings.hide()
-            self.groupBoxRav1eSettings.hide()
-            self.groupBoxSVTAV1Settings.show()
-        elif currentIndex == 3:  # svt-vp9
-            self.horizontalSliderQuality.setValue(50)
-            self.horizontalSliderQuality.setMaximum(63)
-            self.horizontalSliderSpeed.setMaximum(9)
-            self.horizontalSliderSpeed.setValue(9)
-            self.comboBoxTuneAom.hide()
-            self.comboBoxTuneRav1e.hide()
-            self.labelEncoderTune.hide()
-            self.comboBoxTunex265.hide()
-            self.comboBoxTunex264.hide()
-            self.groupBoxAomSettings.hide()
-            self.groupBoxRav1eSettings.hide()
-            self.groupBoxSVTAV1Settings.hide()
-        elif currentIndex == 4:  # vpx-vp9
-            self.horizontalSliderQuality.setValue(30)
-            self.horizontalSliderQuality.setMaximum(63)
-            self.horizontalSliderSpeed.setValue(0)
-            self.horizontalSliderSpeed.setMaximum(5)
-            self.comboBoxTuneAom.hide()
-            self.comboBoxTuneRav1e.hide()
-            self.labelEncoderTune.hide()
-            self.comboBoxTunex265.hide()
-            self.comboBoxTunex264.hide()
-            self.groupBoxAomSettings.hide()
-            self.groupBoxRav1eSettings.hide()
-            self.groupBoxSVTAV1Settings.hide()
-        elif currentIndex == 5:  # x265
-            self.horizontalSliderQuality.setValue(22)
-            self.horizontalSliderQuality.setMaximum(63)
-            self.horizontalSliderSpeed.setValue(4)
-            self.horizontalSliderSpeed.setMaximum(9)
-            self.comboBoxTuneAom.hide()
-            self.comboBoxTuneRav1e.hide()
-            self.labelEncoderTune.show()
-            self.comboBoxTunex265.show()
-            self.comboBoxTunex264.hide()
-            self.groupBoxAomSettings.hide()
-            self.groupBoxRav1eSettings.hide()
-            self.groupBoxSVTAV1Settings.hide()
-        elif currentIndex == 6:  # x264
-            self.horizontalSliderQuality.setValue(23)
-            self.horizontalSliderQuality.setMaximum(51)
-            self.horizontalSliderSpeed.setValue(4)
-            self.horizontalSliderSpeed.setMaximum(9)
-            self.comboBoxTuneAom.hide()
-            self.comboBoxTuneRav1e.hide()
-            self.labelEncoderTune.show()
-            self.comboBoxTunex265.hide()
-            self.comboBoxTunex264.show()
-            self.groupBoxAomSettings.hide()
-            self.groupBoxRav1eSettings.hide()
-            self.groupBoxSVTAV1Settings.hide()
-        elif currentIndex == 7:  # vvc - experimental
-            self.labelEncoderTune.hide()
-            self.comboBoxTunex265.hide()
-            self.comboBoxTunex264.hide()
-            self.comboBoxTuneAom.hide()
-            self.comboBoxTuneRav1e.hide()
-            self.groupBoxAomSettings.hide()
-            self.groupBoxRav1eSettings.hide()
-            self.groupBoxSVTAV1Settings.hide()
 
     def UiCustomSettings(self):
         if self.groupBoxCustomSettings.isChecked() == True:
