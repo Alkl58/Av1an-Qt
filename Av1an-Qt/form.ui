@@ -36,7 +36,7 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0">
       <item>
-       <layout class="QHBoxLayout" name="ButtonSelect" stretch="1,0,1,0,1,0,1">
+       <layout class="QHBoxLayout" name="ButtonSelect" stretch="1,0,1,0,1">
         <property name="leftMargin">
          <number>10</number>
         </property>
@@ -77,26 +77,6 @@
          </widget>
         </item>
         <item>
-         <spacer name="horizontalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>10</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QPushButton" name="Encoder_Button">
-          <property name="text">
-           <string>Encoder</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <spacer name="horizontalSpacer_4">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -127,7 +107,7 @@
          </size>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="pageInput">
          <property name="sizePolicy">
@@ -137,7 +117,7 @@
           </sizepolicy>
          </property>
          <property name="visible">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
@@ -198,8 +178,123 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_2">
-             <item>
+            <layout class="QGridLayout" name="gridLayout_3">
+             <item row="0" column="2">
+              <widget class="QGroupBox" name="groupBox_6">
+               <property name="title">
+                <string>Encoder</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_7">
+                <item row="7" column="0">
+                 <widget class="QLabel" name="labelEncoder_5">
+                  <property name="text">
+                   <string>Passes:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="0" colspan="2">
+                 <widget class="QLabel" name="labelBitDepth_3">
+                  <property name="text">
+                   <string>Bit-Depth:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="2">
+                 <widget class="QComboBox" name="comboBoxBitDepth">
+                  <item>
+                   <property name="text">
+                    <string>8</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>10</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>12</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="2" column="0" colspan="2">
+                 <widget class="QLabel" name="labelEncoder_6">
+                  <property name="text">
+                   <string>Encoder:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QComboBox" name="comboBoxEncoder">
+                  <item>
+                   <property name="text">
+                    <string>aom</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>rav1e</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>svt-av1</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="labelEncoder_7">
+                  <property name="text">
+                   <string>Speed:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="2">
+                 <widget class="QComboBox" name="comboBoxPasses">
+                  <item>
+                   <property name="text">
+                    <string>1</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>2</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLabel" name="labelSpeed">
+                  <property name="text">
+                   <string>4</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QSlider" name="horizontalSliderSpeed">
+                  <property name="maximum">
+                   <number>9</number>
+                  </property>
+                  <property name="value">
+                   <number>6</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="tickPosition">
+                   <enum>QSlider::TicksBelow</enum>
+                  </property>
+                  <property name="tickInterval">
+                   <number>1</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="0" column="0">
               <widget class="QGroupBox" name="groupBox">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -211,13 +306,10 @@
                 <string>Segmenting</string>
                </property>
                <layout class="QGridLayout" name="gridLayout">
-                <item row="0" column="1">
-                 <widget class="QSpinBox" name="spinBoxAv1anWorkers">
-                  <property name="minimum">
-                   <number>1</number>
-                  </property>
-                  <property name="maximum">
-                   <number>256</number>
+                <item row="3" column="0">
+                 <widget class="QCheckBox" name="checkBox">
+                  <property name="text">
+                   <string>Extra Splits:</string>
                   </property>
                  </widget>
                 </item>
@@ -228,53 +320,10 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="1">
-                 <widget class="QSpinBox" name="spinBoxAv1anExtraSplits">
-                  <property name="toolTip">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Noto Mono';&quot;&gt;Adding extra splits if frame distance beetween splits bigger than&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Noto Mono';&quot;&gt;given value. Works with/without PySceneDetect&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Noto Mono';&quot;&gt;Example: 1000 frames video with single scene,&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Noto Mono';&quot;&gt;-xs 200 will add splits at 200,400,600,800.&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                  </property>
-                  <property name="minimum">
-                   <number>1</number>
-                  </property>
-                  <property name="maximum">
-                   <number>10000</number>
-                  </property>
-                 </widget>
-                </item>
                 <item row="0" column="0">
                  <widget class="QLabel" name="label_14">
                   <property name="text">
                    <string>Workers:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0">
-                 <widget class="QCheckBox" name="checkBox">
-                  <property name="text">
-                   <string>Extra Splits:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="2">
-                 <widget class="QLabel" name="labelPySceneThreshold">
-                  <property name="text">
-                   <string>Threshold:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="3">
-                 <widget class="QSpinBox" name="spinBoxPySceneThreshold">
-                  <property name="toolTip">
-                   <string>PySceneDetect threshold for scene detection Default: 35</string>
-                  </property>
-                  <property name="minimum">
-                   <number>1</number>
-                  </property>
-                  <property name="maximum">
-                   <number>100</number>
-                  </property>
-                  <property name="value">
-                   <number>35</number>
                   </property>
                  </widget>
                 </item>
@@ -295,10 +344,56 @@
                   </item>
                  </widget>
                 </item>
+                <item row="0" column="1">
+                 <widget class="QSpinBox" name="spinBoxAv1anWorkers">
+                  <property name="minimum">
+                   <number>1</number>
+                  </property>
+                  <property name="maximum">
+                   <number>256</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QSpinBox" name="spinBoxAv1anExtraSplits">
+                  <property name="toolTip">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Noto Mono';&quot;&gt;Adding extra splits if frame distance beetween splits bigger than&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Noto Mono';&quot;&gt;given value. Works with/without PySceneDetect&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Noto Mono';&quot;&gt;Example: 1000 frames video with single scene,&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Noto Mono';&quot;&gt;-xs 200 will add splits at 200,400,600,800.&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                  <property name="minimum">
+                   <number>1</number>
+                  </property>
+                  <property name="maximum">
+                   <number>10000</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="labelPySceneThreshold">
+                  <property name="text">
+                   <string>Threshold:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QSpinBox" name="spinBoxPySceneThreshold">
+                  <property name="toolTip">
+                   <string>PySceneDetect threshold for scene detection Default: 35</string>
+                  </property>
+                  <property name="minimum">
+                   <number>1</number>
+                  </property>
+                  <property name="maximum">
+                   <number>100</number>
+                  </property>
+                  <property name="value">
+                   <number>35</number>
+                  </property>
+                 </widget>
+                </item>
                </layout>
               </widget>
              </item>
-             <item>
+             <item row="0" column="1">
               <widget class="QGroupBox" name="groupBox_2">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -310,20 +405,6 @@
                 <string>Target Quality (VMAF)</string>
                </property>
                <layout class="QGridLayout" name="gridLayout_2">
-                <item row="4" column="0">
-                 <widget class="QLabel" name="label_16">
-                  <property name="text">
-                   <string>VMAF Probes:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0">
-                 <widget class="QCheckBox" name="checkBoxMaxQualityVMAF">
-                  <property name="text">
-                   <string>Max Quality:</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="1" column="0">
                  <widget class="QCheckBox" name="checkBoxMinQualityVMAF">
                   <property name="text">
@@ -331,17 +412,40 @@
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_15">
+                <item row="6" column="1">
+                 <widget class="QComboBox" name="comboBoxVMAFResolution">
+                  <item>
+                   <property name="text">
+                    <string>1920x1080</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>3840x2160</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="5" column="0">
+                 <widget class="QLabel" name="label_16">
                   <property name="text">
-                   <string>Target Quality (VMAF):</string>
+                   <string>VMAF Probes:</string>
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="1">
-                 <widget class="QSpinBox" name="spinBoxMinQVMAF">
+                <item row="5" column="1">
+                 <widget class="QSpinBox" name="spinBoxVMAFProbes">
                   <property name="toolTip">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Maximum Quality (min quantizer) value limit for Target VMAF&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Number of probes for interpolation.&lt;/p&gt;&lt;p&gt;1 and 2 probes have special cases to try to work with few data points.&lt;/p&gt;&lt;p&gt;Optimal is 4-6 probes. Default: 4&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                  <property name="minimum">
+                   <number>1</number>
+                  </property>
+                  <property name="maximum">
+                   <number>10</number>
+                  </property>
+                  <property name="value">
+                   <number>4</number>
                   </property>
                  </widget>
                 </item>
@@ -368,272 +472,142 @@
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="2">
-                 <widget class="QLabel" name="label_10">
-                  <property name="font">
-                   <font>
-                    <italic>true</italic>
-                   </font>
-                  </property>
+                <item row="2" column="0">
+                 <widget class="QCheckBox" name="checkBoxMaxQualityVMAF">
                   <property name="text">
-                   <string>NOTE: Min Quality = Max Quantizer  |  Max Quality = Min Quantizer</string>
+                   <string>Max Quality:</string>
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="1">
-                 <widget class="QSpinBox" name="spinBoxVMAFProbes">
+                <item row="1" column="1">
+                 <widget class="QSpinBox" name="spinBoxMinQVMAF">
                   <property name="toolTip">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Number of probes for interpolation.&lt;/p&gt;&lt;p&gt;1 and 2 probes have special cases to try to work with few data points.&lt;/p&gt;&lt;p&gt;Optimal is 4-6 probes. Default: 4&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                  </property>
-                  <property name="minimum">
-                   <number>1</number>
-                  </property>
-                  <property name="maximum">
-                   <number>10</number>
-                  </property>
-                  <property name="value">
-                   <number>4</number>
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Maximum Quality (min quantizer) value limit for Target VMAF&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="2">
+                <item row="6" column="0">
                  <widget class="QLabel" name="label_17">
                   <property name="text">
                    <string>VMAF Resolution:</string>
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="3">
-                 <widget class="QComboBox" name="comboBoxVMAFResolution">
-                  <item>
-                   <property name="text">
-                    <string>1920x1080</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>3840x2160</string>
-                   </property>
-                  </item>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_15">
+                  <property name="text">
+                   <string>Target Quality (VMAF):</string>
+                  </property>
                  </widget>
                 </item>
                </layout>
               </widget>
              </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="pageEncoder">
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QWidget" name="widget_2" native="true">
-            <layout class="QVBoxLayout" name="verticalLayout_3">
-             <item>
-              <widget class="QGroupBox" name="groupBox_4">
+             <item row="1" column="1">
+              <spacer name="verticalSpacer">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="1" column="0">
+              <widget class="QGroupBox" name="groupBox_3">
                <property name="title">
-                <string>Quality</string>
+                <string>Audio</string>
                </property>
                <layout class="QGridLayout" name="gridLayout_4">
-                <item row="4" column="3">
-                 <widget class="QCheckBox" name="checkBoxCBR">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label">
                   <property name="text">
-                   <string>CBR</string>
+                   <string>Codec:</string>
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="0" colspan="4">
-                 <widget class="QSlider" name="horizontalSliderQuality">
-                  <property name="maximum">
-                   <number>63</number>
-                  </property>
-                  <property name="value">
-                   <number>30</number>
-                  </property>
-                  <property name="tracking">
-                   <bool>true</bool>
-                  </property>
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="invertedAppearance">
-                   <bool>false</bool>
-                  </property>
-                  <property name="invertedControls">
-                   <bool>true</bool>
-                  </property>
-                  <property name="tickPosition">
-                   <enum>QSlider::TicksBelow</enum>
-                  </property>
-                  <property name="tickInterval">
-                   <number>1</number>
-                  </property>
+                <item row="0" column="1">
+                 <widget class="QComboBox" name="comboBox">
+                  <item>
+                   <property name="text">
+                    <string>Opus</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>AC3</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>AAC</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>MP3</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Copy Audio</string>
+                   </property>
+                  </item>
                  </widget>
                 </item>
-                <item row="0" column="0" colspan="2">
-                 <widget class="QRadioButton" name="radioButtonConstantQ">
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_2">
                   <property name="text">
-                   <string>Constant Quality:</string>
-                  </property>
-                  <property name="checked">
-                   <bool>true</bool>
+                   <string>Bitrate (KBit/s):</string>
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="2" colspan="2">
-                 <widget class="QLabel" name="labelQuality">
-                  <property name="text">
-                   <string>30</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="2">
-                 <widget class="QSpinBox" name="spinBoxBitrate">
+                <item row="1" column="1">
+                 <widget class="QSpinBox" name="spinBox">
                   <property name="minimum">
                    <number>1</number>
                   </property>
                   <property name="maximum">
-                   <number>100000</number>
-                  </property>
-                  <property name="singleStep">
-                   <number>10</number>
+                   <number>640</number>
                   </property>
                   <property name="value">
-                   <number>1000</number>
+                   <number>128</number>
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="0">
-                 <widget class="QRadioButton" name="radioButtonBitrate">
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_3">
                   <property name="text">
-                   <string>Bitrate:</string>
-                  </property>
-                  <property name="checked">
-                   <bool>false</bool>
+                   <string>Channels:</string>
                   </property>
                  </widget>
                 </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
-              <widget class="QGroupBox" name="groupBox_3">
-               <property name="title">
-                <string>Video</string>
-               </property>
-               <layout class="QGridLayout" name="gridLayout_3">
-                <item row="0" column="0">
-                 <widget class="QLabel" name="labelEncoder">
-                  <property name="text">
-                   <string>Encoder:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QComboBox" name="comboBoxEncoder">
-                  <item>
-                   <property name="text">
-                    <string>aom</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>rav1e</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>svt-av1</string>
-                   </property>
-                  </item>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QLabel" name="labelBitDepth">
-                  <property name="text">
-                   <string>Bit-Depth:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1">
-                 <widget class="QComboBox" name="comboBoxBitDepth">
-                  <item>
-                   <property name="text">
-                    <string>8</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>10</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>12</string>
-                   </property>
-                  </item>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
-              <widget class="QGroupBox" name="groupBox_5">
-               <property name="title">
-                <string>Optimisation</string>
-               </property>
-               <layout class="QGridLayout" name="gridLayout_5">
-                <item row="0" column="0">
-                 <widget class="QLabel" name="labelEncoder_2">
-                  <property name="text">
-                   <string>Speed:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QSlider" name="horizontalSliderSpeed">
-                  <property name="maximum">
-                   <number>9</number>
-                  </property>
-                  <property name="value">
-                   <number>6</number>
-                  </property>
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="tickPosition">
-                   <enum>QSlider::TicksBelow</enum>
-                  </property>
-                  <property name="tickInterval">
+                <item row="2" column="1">
+                 <widget class="QComboBox" name="comboBox_2">
+                  <property name="currentIndex">
                    <number>1</number>
                   </property>
-                 </widget>
-                </item>
-                <item row="0" column="2">
-                 <widget class="QLabel" name="labelSpeed">
-                  <property name="text">
-                   <string>4</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QLabel" name="labelEncoder_3">
-                  <property name="text">
-                   <string>Passes:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1">
-                 <widget class="QComboBox" name="comboBoxPasses">
                   <item>
                    <property name="text">
-                    <string>1</string>
+                    <string>1.0 (Mono)</string>
                    </property>
                   </item>
                   <item>
                    <property name="text">
-                    <string>2</string>
+                    <string>2.0 (Stereo)</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>5.1</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>7.1</string>
                    </property>
                   </item>
                  </widget>
