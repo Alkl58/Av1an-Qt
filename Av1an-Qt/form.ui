@@ -127,7 +127,7 @@
          </size>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="pageInput">
          <property name="sizePolicy">
@@ -334,7 +334,7 @@
                 <item row="0" column="0">
                  <widget class="QLabel" name="label_15">
                   <property name="text">
-                   <string>Target VMAF:</string>
+                   <string>Target Quality (VMAF):</string>
                   </property>
                  </widget>
                 </item>
@@ -429,338 +429,219 @@
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <widget class="QWidget" name="widget_2" native="true">
-            <widget class="QLabel" name="labelEncoder">
-             <property name="geometry">
-              <rect>
-               <x>80</x>
-               <y>50</y>
-               <width>67</width>
-               <height>31</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Encoder:</string>
-             </property>
-            </widget>
-            <widget class="QComboBox" name="comboBoxPasses">
-             <property name="geometry">
-              <rect>
-               <x>170</x>
-               <y>330</y>
-               <width>81</width>
-               <height>36</height>
-              </rect>
-             </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
              <item>
-              <property name="text">
-               <string>1</string>
-              </property>
+              <widget class="QGroupBox" name="groupBox_4">
+               <property name="title">
+                <string>Quality</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_4">
+                <item row="4" column="3">
+                 <widget class="QCheckBox" name="checkBoxCBR">
+                  <property name="text">
+                   <string>CBR</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0" colspan="4">
+                 <widget class="QSlider" name="horizontalSliderQuality">
+                  <property name="maximum">
+                   <number>63</number>
+                  </property>
+                  <property name="value">
+                   <number>30</number>
+                  </property>
+                  <property name="tracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="invertedAppearance">
+                   <bool>false</bool>
+                  </property>
+                  <property name="invertedControls">
+                   <bool>true</bool>
+                  </property>
+                  <property name="tickPosition">
+                   <enum>QSlider::TicksBelow</enum>
+                  </property>
+                  <property name="tickInterval">
+                   <number>1</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" colspan="2">
+                 <widget class="QRadioButton" name="radioButtonConstantQ">
+                  <property name="text">
+                   <string>Constant Quality:</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2" colspan="2">
+                 <widget class="QLabel" name="labelQuality">
+                  <property name="text">
+                   <string>30</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="2">
+                 <widget class="QSpinBox" name="spinBoxBitrate">
+                  <property name="minimum">
+                   <number>1</number>
+                  </property>
+                  <property name="maximum">
+                   <number>100000</number>
+                  </property>
+                  <property name="singleStep">
+                   <number>10</number>
+                  </property>
+                  <property name="value">
+                   <number>1000</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0">
+                 <widget class="QRadioButton" name="radioButtonBitrate">
+                  <property name="text">
+                   <string>Bitrate:</string>
+                  </property>
+                  <property name="checked">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
              </item>
              <item>
-              <property name="text">
-               <string>2</string>
-              </property>
-             </item>
-            </widget>
-            <widget class="QLabel" name="labelSpeed">
-             <property name="geometry">
-              <rect>
-               <x>340</x>
-               <y>280</y>
-               <width>111</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>4</string>
-             </property>
-            </widget>
-            <widget class="QLabel" name="label">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>20</y>
-               <width>67</width>
-               <height>22</height>
-              </rect>
-             </property>
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>Video</string>
-             </property>
-            </widget>
-            <widget class="QComboBox" name="comboBoxBitDepth">
-             <property name="geometry">
-              <rect>
-               <x>170</x>
-               <y>150</y>
-               <width>91</width>
-               <height>36</height>
-              </rect>
-             </property>
-             <item>
-              <property name="text">
-               <string>8</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>10</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>12</string>
-              </property>
-             </item>
-            </widget>
-            <widget class="QComboBox" name="comboBoxEncoder">
-             <property name="geometry">
-              <rect>
-               <x>170</x>
-               <y>50</y>
-               <width>91</width>
-               <height>36</height>
-              </rect>
-             </property>
-             <item>
-              <property name="text">
-               <string>aom</string>
-              </property>
+              <widget class="QGroupBox" name="groupBox_3">
+               <property name="title">
+                <string>Video</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_3">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="labelEncoder">
+                  <property name="text">
+                   <string>Encoder:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QComboBox" name="comboBoxEncoder">
+                  <item>
+                   <property name="text">
+                    <string>aom</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>rav1e</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>svt-av1</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="labelBitDepth">
+                  <property name="text">
+                   <string>Bit-Depth:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QComboBox" name="comboBoxBitDepth">
+                  <item>
+                   <property name="text">
+                    <string>8</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>10</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>12</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
              </item>
              <item>
-              <property name="text">
-               <string>rav1e</string>
-              </property>
+              <widget class="QGroupBox" name="groupBox_5">
+               <property name="title">
+                <string>Optimisation</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_5">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="labelEncoder_2">
+                  <property name="text">
+                   <string>Speed:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QSlider" name="horizontalSliderSpeed">
+                  <property name="maximum">
+                   <number>9</number>
+                  </property>
+                  <property name="value">
+                   <number>6</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="tickPosition">
+                   <enum>QSlider::TicksBelow</enum>
+                  </property>
+                  <property name="tickInterval">
+                   <number>1</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QLabel" name="labelSpeed">
+                  <property name="text">
+                   <string>4</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="labelEncoder_3">
+                  <property name="text">
+                   <string>Passes:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QComboBox" name="comboBoxPasses">
+                  <item>
+                   <property name="text">
+                    <string>1</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>2</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
              </item>
-             <item>
-              <property name="text">
-               <string>svt-av1</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>svt-vp9</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>vpx-vp9</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>x265</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>x264</string>
-              </property>
-             </item>
-            </widget>
-            <widget class="QLabel" name="labelQuality">
-             <property name="geometry">
-              <rect>
-               <x>580</x>
-               <y>60</y>
-               <width>67</width>
-               <height>31</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>30</string>
-             </property>
-            </widget>
-            <widget class="QLabel" name="labelEncoder_3">
-             <property name="geometry">
-              <rect>
-               <x>80</x>
-               <y>340</y>
-               <width>67</width>
-               <height>21</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Passes:</string>
-             </property>
-            </widget>
-            <widget class="QCheckBox" name="checkBoxCBR">
-             <property name="geometry">
-              <rect>
-               <x>610</x>
-               <y>150</y>
-               <width>97</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>CBR</string>
-             </property>
-            </widget>
-            <widget class="QRadioButton" name="radioButtonBitrate">
-             <property name="geometry">
-              <rect>
-               <x>430</x>
-               <y>140</y>
-               <width>151</width>
-               <height>51</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Bitrate:</string>
-             </property>
-             <property name="checked">
-              <bool>false</bool>
-             </property>
-            </widget>
-            <widget class="QLabel" name="label_3">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>260</y>
-               <width>101</width>
-               <height>22</height>
-              </rect>
-             </property>
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>Optimisation</string>
-             </property>
-            </widget>
-            <widget class="QLabel" name="labelEncoder_2">
-             <property name="geometry">
-              <rect>
-               <x>80</x>
-               <y>290</y>
-               <width>67</width>
-               <height>21</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Speed:</string>
-             </property>
-            </widget>
-            <widget class="QRadioButton" name="radioButtonConstantQ">
-             <property name="geometry">
-              <rect>
-               <x>430</x>
-               <y>60</y>
-               <width>151</width>
-               <height>31</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Constant Quality:</string>
-             </property>
-             <property name="checked">
-              <bool>true</bool>
-             </property>
-            </widget>
-            <widget class="QSlider" name="horizontalSliderSpeed">
-             <property name="geometry">
-              <rect>
-               <x>170</x>
-               <y>290</y>
-               <width>160</width>
-               <height>31</height>
-              </rect>
-             </property>
-             <property name="maximum">
-              <number>9</number>
-             </property>
-             <property name="value">
-              <number>6</number>
-             </property>
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="tickPosition">
-              <enum>QSlider::TicksBelow</enum>
-             </property>
-             <property name="tickInterval">
-              <number>1</number>
-             </property>
-            </widget>
-            <widget class="QLabel" name="labelBitDepth">
-             <property name="geometry">
-              <rect>
-               <x>80</x>
-               <y>150</y>
-               <width>81</width>
-               <height>31</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Bit-Depth:</string>
-             </property>
-            </widget>
-            <widget class="QSpinBox" name="spinBoxBitrate">
-             <property name="geometry">
-              <rect>
-               <x>510</x>
-               <y>150</y>
-               <width>91</width>
-               <height>36</height>
-              </rect>
-             </property>
-             <property name="minimum">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <number>100000</number>
-             </property>
-             <property name="singleStep">
-              <number>10</number>
-             </property>
-             <property name="value">
-              <number>1000</number>
-             </property>
-            </widget>
-            <widget class="QSlider" name="horizontalSliderQuality">
-             <property name="geometry">
-              <rect>
-               <x>430</x>
-               <y>100</y>
-               <width>411</width>
-               <height>20</height>
-              </rect>
-             </property>
-             <property name="maximum">
-              <number>63</number>
-             </property>
-             <property name="value">
-              <number>30</number>
-             </property>
-             <property name="tracking">
-              <bool>true</bool>
-             </property>
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="invertedAppearance">
-              <bool>false</bool>
-             </property>
-             <property name="invertedControls">
-              <bool>true</bool>
-             </property>
-             <property name="tickPosition">
-              <enum>QSlider::TicksBelow</enum>
-             </property>
-             <property name="tickInterval">
-              <number>1</number>
-             </property>
-            </widget>
+            </layout>
            </widget>
           </item>
          </layout>
