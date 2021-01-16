@@ -36,7 +36,7 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0">
       <item>
-       <layout class="QHBoxLayout" name="ButtonSelect" stretch="1,0,1,0,1">
+       <layout class="QHBoxLayout" name="ButtonSelect" stretch="1,0,1,0">
         <property name="leftMargin">
          <number>10</number>
         </property>
@@ -52,7 +52,7 @@
         <item>
          <widget class="QPushButton" name="Input_Button">
           <property name="text">
-           <string>Input</string>
+           <string>Input / Output</string>
           </property>
          </widget>
         </item>
@@ -72,7 +72,7 @@
         <item>
          <widget class="QPushButton" name="Video_Settings_Button">
           <property name="text">
-           <string>Generic Settings</string>
+           <string>Encoding Settings</string>
           </property>
          </widget>
         </item>
@@ -88,13 +88,6 @@
            </size>
           </property>
          </spacer>
-        </item>
-        <item>
-         <widget class="QPushButton" name="OutputButton">
-          <property name="text">
-           <string>Output</string>
-          </property>
-         </widget>
         </item>
        </layout>
       </item>
@@ -121,44 +114,78 @@
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
-           <widget class="QLabel" name="DropInLabel">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-              <horstretch>100</horstretch>
-              <verstretch>100</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>36</pointsize>
-             </font>
-            </property>
-            <property name="autoFillBackground">
-             <bool>false</bool>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">            QLabel{
+           <layout class="QGridLayout" name="gridLayout_5">
+            <item row="0" column="0" colspan="5">
+             <widget class="QLabel" name="DropInLabel">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>100</horstretch>
+                <verstretch>100</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>36</pointsize>
+               </font>
+              </property>
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">            QLabel{
 
                 border: 4px dashed #aaa
 
             }</string>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::Box</enum>
-            </property>
-            <property name="text">
-             <string>Drop In File Or Click For Import</string>
-            </property>
-            <property name="scaledContents">
-             <bool>true</bool>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="text">
+               <string>Drop In File Or Click For Import</string>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="4">
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>Select Output:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="3">
+             <widget class="QPushButton" name="pushButtonSelectOutput">
+              <property name="text">
+               <string>Select...</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1" colspan="2">
+             <widget class="QLineEdit" name="lineEdit"/>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
@@ -616,34 +643,6 @@
               </widget>
              </item>
             </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="page_4">
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <widget class="QPushButton" name="pushButton">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>200</width>
-              <height>200</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>30</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>OUTPUT STUFF</string>
-            </property>
            </widget>
           </item>
          </layout>
